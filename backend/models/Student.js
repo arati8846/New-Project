@@ -26,12 +26,11 @@ const studentSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-studentSchema.pre("validate", function calculateResult(next) {
+studentSchema.pre("validate", function calculateResult() {
   if ([this.physics, this.chemistry, this.english].every(Number.isInteger)) {
     this.total = this.physics + this.chemistry + this.english;
     this.average = Math.round((this.total / 3) * 10) / 10;
   }
-  next();
 });
 
 studentSchema.index({ owner: 1, total: -1 });
