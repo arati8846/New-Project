@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Record, search, and manage student examination results." />
+    <title>Student Results | Campus Desk</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/app.js" defer></script>
+  </head>
+  <body>
+    <main class="auth-shell" id="authView">
+      <section class="auth-card">
+        <div class="brand-mark">C</div>
+        <p class="eyebrow">CAMPUS DESK</p>
+        <h1 id="authTitle">Welcome back</h1>
+        <p class="muted" id="authSubtitle">Sign in to manage your student results.</p>
+        <form id="authForm" class="form-stack">
+          <label id="nameField" class="hidden">Your name<input id="name" autocomplete="name" maxlength="80" /></label>
+          <label>Email address<input id="email" type="email" autocomplete="email" required maxlength="160" /></label>
+          <label>Password<input id="password" type="password" autocomplete="current-password" required minlength="8" maxlength="72" /></label>
+          <button class="button primary" id="authSubmit" type="submit">Sign in</button>
+        </form>
+        <p class="switch-auth"><span id="authSwitchText">New to Campus Desk?</span> <button class="link-button" id="authSwitch" type="button">Create an account</button></p>
+        <p class="notice" id="authNotice" role="status" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <div class="app hidden" id="appView">
+      <aside class="sidebar">
+        <div class="brand"><div class="brand-mark small">C</div><div><strong>Campus Desk</strong><span>STUDENT RESULTS</span></div></div>
+        <div class="sidebar-note"><span class="online-dot"></span><span>Results workspace</span></div>
+        <div class="sidebar-bottom"><div class="user-chip"><span class="avatar" id="userAvatar">S</span><div><strong id="userName">Student</strong><small id="userEmail"></small></div></div><button class="button quiet full" id="logoutButton" type="button">Sign out</button></div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar"><div><span class="eyebrow">ACADEMIC RECORDS</span><h1>Student results</h1></div><span class="term-chip">MARKS OVERVIEW</span></header>
+        <section class="content">
+          <div class="welcome-row"><div><h2 id="welcomeTitle">Your class, at a glance.</h2><p>Add subject marks and keep each student’s total in one place.</p></div><span class="date-chip" id="todayLabel"></span></div>
+          <div class="stats-grid">
+            <article class="stat-card"><span class="stat-label">Students recorded</span><strong class="stat-number" id="studentCount">0</strong><span class="stat-note">In your results list</span></article>
+            <article class="stat-card"><span class="stat-label">Class average</span><strong class="stat-number" id="classAverage">0%</strong><span class="stat-note">Across three subjects</span></article>
+            <article class="stat-card"><span class="stat-label">Top performer</span><strong class="stat-number compact" id="topperName">—</strong><span class="stat-note" id="topperScore">No results yet</span></article>
+          </div>
+
+          <section class="panel form-panel">
+            <div class="panel-heading"><div><p class="eyebrow">STUDENT RECORD</p><h2 id="formTitle">Add a student</h2><p>Enter marks from 0 to 100 for each subject.</p></div><span class="form-badge">3 SUBJECTS</span></div>
+            <form id="studentForm" class="student-form">
+              <label>Student name<input id="studentName" required maxlength="100" placeholder="e.g. Aanya Sharma" /></label>
+              <label>Physics<input id="physics" type="number" min="0" max="100" step="1" required placeholder="0–100" /></label>
+              <label>Chemistry<input id="chemistry" type="number" min="0" max="100" step="1" required placeholder="0–100" /></label>
+              <label>English<input id="english" type="number" min="0" max="100" step="1" required placeholder="0–100" /></label>
+              <div class="total-preview"><span>Total marks</span><strong id="totalPreview">0 <small>/ 300</small></strong></div>
+              <div class="form-actions"><button class="button primary" id="saveStudent" type="submit">Add result</button><button class="button secondary hidden" id="cancelEdit" type="button">Cancel edit</button></div>
+            </form>
+          </section>
+
+          <section class="panel list-panel">
+            <div class="panel-heading list-heading"><div><p class="eyebrow">CLASS REGISTER</p><h2>Results list</h2></div><span class="count-pill" id="recordCount">0 records</span></div>
+            <label class="search-box"><span aria-hidden="true">⌕</span><input id="searchInput" type="search" placeholder="Search students by name…" aria-label="Search students by name" /></label>
+            <div class="table-wrap"><table><thead><tr><th>RANK</th><th>STUDENT</th><th>PHYSICS</th><th>CHEMISTRY</th><th>ENGLISH</th><th>TOTAL</th><th>AVERAGE</th><th>ACTIONS</th></tr></thead><tbody id="studentRows"></tbody></table><div class="empty-state" id="emptyState"><div class="empty-icon">✦</div><strong>No student results yet</strong><p>Add your first result using the form above.</p></div></div>
+          </section>
+          <footer class="footer"><span>Student Result Management System</span><span>Built for learning, one record at a time.</span></footer>
+        </section>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      </main>
+    </div>
+  </body>
+</html>
