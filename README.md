@@ -21,8 +21,6 @@ frontend/
   index.html           Sign-in and results dashboard
   styles.css           Responsive interface
   app.js               Forms, API calls, search, and summaries
-vsec1/                 Original static login/signup examples from the source repository
-vsec3/                 Original source screenshots
 REPORT.md              College mini-project report draft
 Full_Stack_Mini_Project_Report_Format.docx  Supplied report template
 ```
@@ -34,22 +32,22 @@ The API also serves the frontend, so one local server runs both parts at `http:/
 Requirements: Node.js 20 or newer, npm, and MongoDB Community Server or a MongoDB Atlas database.
 
 1. Start MongoDB locally, or create a database in MongoDB Atlas.
-2. In PowerShell, create the backend configuration:
+2. From the project folder, create the backend configuration:
 
    ```powershell
-   Copy-Item backend/.env.example backend/.env
+   Copy-Item .\backend\.env.example .\backend\.env
    ```
 
-3. Edit `backend/.env`. Set `MONGO_URI` to your local or Atlas connection string. Set `JWT_SECRET` to a private random value of at least 32 characters. You can generate one with:
+3. Edit `backend/.env`. Set `MONGO_URI` to your local or Atlas connection string. Set `JWT_SECRET` to a private random value of at least 32 characters. Generate one with:
 
    ```powershell
    node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
    ```
 
-4. Install packages and start the app:
+4. Install packages and start the app from the `backend` folder:
 
    ```powershell
-   cd backend
+   Set-Location .\backend
    npm install
    npm start
    ```
